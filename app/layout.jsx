@@ -1,18 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
+
+import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const monaSans = Mona_Sans({
+  variable: "--font-mona-sans",
   subsets: ["latin"],
 });
 
 export const metadata = {
-  title: "DevSage Solutions - Innovative Software Development & Technology Solutions",
+  title: "DevSage Solutions",
   description:
     "DevSage Solutions is a leading software development company specializing in cutting-edge web applications, mobile solutions, and digital transformation services. We deliver scalable, high-performance software solutions tailored to your business needs.",
   keywords: [
@@ -61,7 +58,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${monaSans.variable} antialiased`}
       >
         {children}
       </body>
