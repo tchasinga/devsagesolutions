@@ -2,6 +2,7 @@
 
 import { Mona_Sans } from "next/font/google";
 import "./globals.css";
+import Navbars from "./components/Navbars";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",

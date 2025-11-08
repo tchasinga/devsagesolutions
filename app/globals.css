@@ -4,3 +4,23 @@
 body {
   font-family: "Mona Sans", sans-serif;
 }
+
+
+
+/* .glasscard::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+
+.glasscard::after {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+} */
