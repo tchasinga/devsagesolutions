@@ -84,10 +84,10 @@ export default function Hero() {
         className="flex flex-col justify-center space-y-8 lg:w-1/2 text-white z-10"
       >
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Transform Your Business with
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-              Digital Excellence
+          <h1 className="text-4xl font-bold leading-tight">
+            Transform Your Business with    
+             <span className="text-blue-400">
+                Digital Excellence
             </span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
@@ -98,21 +98,21 @@ export default function Hero() {
         </div>
 
         {/* CountUp Statistics */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           <div className="flex flex-col">
-            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-400">
               <CountUp end={500} duration={3} suffix="+" />
             </div>
             <p className="text-sm md:text-base text-gray-400 mt-2">Projects Completed</p>
           </div>
           <div className="flex flex-col">
-            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-400">
               <CountUp end={200} duration={3} suffix="+" />
             </div>
             <p className="text-sm md:text-base text-gray-400 mt-2">Happy Clients</p>
           </div>
           <div className="flex flex-col col-span-2 md:col-span-1">
-            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
+            <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-400">
               <CountUp end={98} duration={3} suffix="%" />
             </div>
             <p className="text-sm md:text-base text-gray-400 mt-2">Success Rate</p>
@@ -121,7 +121,7 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 mt-8">
-          <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button className="px-8 py-3 bg-blue-400 rounded-full font-semibold hover:bg-blue-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
             Get Started
           </button>
           <button className="px-8 py-3 border-2 border-white/30 rounded-full font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
