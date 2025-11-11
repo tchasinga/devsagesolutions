@@ -202,9 +202,6 @@ export default function Navbars() {
                 <div className="flex items-center justify-between relative z-10">
                   <span className="flex items-center gap-2">
                     {item.label}
-                    {item.label === 'Services' && (
-                      <FiChevronDown className="text-xs" />
-                    )}
                   </span>
                   {activeLink === item.id && (
                     <div className="flex items-center gap-2">
