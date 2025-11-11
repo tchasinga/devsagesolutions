@@ -171,7 +171,7 @@ export default function Advantages() {
         <div className="text-center mb-16 md:mb-20">
           <h2 
             ref={titleRef}
-            className='text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 tracking-tight mb-4'
+            className='text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight mb-4'
           >
             Why Choose Us
           </h2>
