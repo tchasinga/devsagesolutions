@@ -86,7 +86,7 @@ export default function Hero() {
         <div className="space-y-4">
           <div className="leading-tight flex flex-col gap-2">
             <h1 className="text-base font-light">Transform Your Business with</h1>
-             <h3 className="text-blue-400 text-4xl font-bold tracking-tight">Digital Excellence</h3>
+             <h3 className="text-blue-400 text-7xl font-bold tracking-tight">Digital Excellence</h3>
           </div>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
             We deliver cutting-edge solutions that drive growth, innovation, and
