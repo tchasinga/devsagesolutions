@@ -166,7 +166,7 @@ export default function Advantages() {
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 w-full relative z-10">
+      <div className="px-4 md:px-8 lg:px-16 w-full relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16 md:mb-20">
           <h2 
@@ -193,13 +193,13 @@ export default function Advantages() {
             return (
               <div
                 key={advantage.id}
-                className="max-w-screen-2xl mx-auto group relative"
+                className=" group relative"
               >
                 <div className={`
                   relative h-full p-6 md:p-8 rounded-2xl 
                   bg-gradient-to-br from-white/5 to-white/0
                   border border-white/10
-                  transform max-w-screen-2xl mx-auto transition-all duration-300
+                  transform  transition-all duration-300
                   hover:scale-105 hover:shadow-2xl
                   hover:border-white/20
                   backdrop-blur-sm
