@@ -4,6 +4,7 @@ import About from './components/Pages/About'
 import Hero from './components/Pages/Hero'
 import Keeper from './components/Pages/Keeper'
 import ChatBot from './components/ChatBot'
+import Service from './components/Pages/Service'
 
 
 export default function Home () {
@@ -13,6 +14,7 @@ export default function Home () {
     <Keeper />
     <About />
     <ChatBot />
+    <Service />
    </div>
   )
 }
