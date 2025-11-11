@@ -10,7 +10,7 @@ export default function Keeper() {
         background: `linear-gradient(rgba(4, 5, 5, 0.801), rgba(0, 0, 0, 0.112)), url(${Oneimg.src}) center / cover no-repeat fixed`,
     }}
     >
-              <Navbars />
+              
               <Hero />
     </div>
   )

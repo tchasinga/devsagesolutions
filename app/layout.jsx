@@ -61,6 +61,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${monaSans.variable} antialiased`}
       >
+        <Navbars />
         {children}
       </body>
     </html>

@@ -106,7 +106,7 @@ export default function Navbars() {
                   } group-hover:from-blue-300 group-hover:via-cyan-300 group-hover:to-teal-300`}>
                     DevSage Solutions
                   </h1>
-                  <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center gap-1">
                     <HiOutlineSparkles className="text-blue-400 text-xs" />
                     <span className="text-[10px] text-blue-300 font-medium">Innovation</span>
                   </div>
