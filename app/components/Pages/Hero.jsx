@@ -76,7 +76,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="flex flex-col lg:flex-row items-center justify-between min-h-screen px-4 md:px-8 lg:px-16 py-20 lg:py-0 gap-12 lg:gap-8"
+      className="flex flex-col lg:flex-row  items-center justify-between min-h-screen px-4 md:px-8 lg:px-16 py-20 lg:py-0 gap-12 lg:gap-8"
     >
       {/* Left Side - Content */}
       <div
