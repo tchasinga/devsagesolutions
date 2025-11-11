@@ -81,7 +81,7 @@ export default function Hero() {
       {/* Left Side - Content */}
       <div
         ref={leftContentRef}
-        className="flex flex-col justify-center space-y-8 lg:w-1/2 text-white z-10"
+        className="flex flex-col justify-center space-y-8 lg:w-1/2 text-white z-10 mt-20"
       >
         <div className="space-y-4">
           <div className="leading-tight flex flex-col gap-2">
