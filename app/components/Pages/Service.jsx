@@ -135,7 +135,7 @@ const services = [
         'Lead Generation',
         'Document Management'
       ],
-      technologies: ['Next.js', 'Google Maps API', 'MongoDB', 'Cloudinary', 'Stripe']
+      technologies: ['Next.js', 'Google Maps API', 'MongoDB', 'Cloudinary', 'Stripe', 'Mpesa']
     }
   },
   {
@@ -291,7 +291,7 @@ export default function Service() {
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 w-full relative z-10">
+      <div className="max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-16 w-full relative z-10">
         {/* Title Section */}
         <div className="text-center mb-16 md:mb-20">
           <h2 
@@ -337,7 +337,7 @@ export default function Service() {
                       </div>
                     </div>
                     
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                    <h3 className="text-xl md:text-2xl font-light text-white mb-3 group-hover:translate-x-1 transition-transform duration-300">
                       {service.title}
                     </h3>
                     
