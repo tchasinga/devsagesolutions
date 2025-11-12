@@ -3,6 +3,7 @@
 import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 import Navbars from "./components/Navbars";
+import AnalyticsComponent from "./components/Analytics";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${monaSans.variable} antialiased`}
       >
+        <AnalyticsComponent />
         <Navbars />
         {children}
       </body>
