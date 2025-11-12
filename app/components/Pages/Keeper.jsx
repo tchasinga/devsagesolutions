@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo } from 'react'
+import React, { useRef, useEffect, useState, startTransition } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbars from '../Navbars'
@@ -17,20 +17,29 @@ export default function Keeper() {
   const backgroundRef = useRef(null)
   const animatedOverlayRef = useRef(null)
   const particlesRef = useRef(null)
+  const [particles, setParticles] = useState([])
 
-  // Generate particle data once
-  const particles = useMemo(() => {
-    return Array.from({ length: 12 }, () => ({
-      width: random(4, 12),
-      height: random(4, 12),
-      left: random(0, 100),
-      top: random(0, 100),
-      r: random(59, 147),
-      g: random(130, 200),
-      b: random(246, 255),
-      opacity: random(0.3, 0.6),
-      shadow: random(10, 20),
-    }))
+  // Generate particle data only on client side to avoid hydration mismatch
+  // This is necessary because Math.random() produces different values on server vs client
+  useEffect(() => {
+    // Only generate particles on client side to prevent hydration mismatch
+    if (typeof window !== 'undefined') {
+      startTransition(() => {
+        setParticles(
+          Array.from({ length: 12 }, () => ({
+            width: random(4, 12),
+            height: random(4, 12),
+            left: random(0, 100),
+            top: random(0, 100),
+            r: random(59, 147),
+            g: random(130, 200),
+            b: random(246, 255),
+            opacity: random(0.3, 0.6),
+            shadow: random(10, 20),
+          }))
+        )
+      })
+    }
   }, [])
 
   useEffect(() => {
@@ -114,23 +123,25 @@ export default function Keeper() {
         }}
       />
 
-      {/* Floating particles */}
-      <div ref={particlesRef} className="absolute inset-0 pointer-events-none z-0">
-        {particles.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: `${particle.width}px`,
-              height: `${particle.height}px`,
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-              background: `rgba(${particle.r}, ${particle.g}, ${particle.b}, ${particle.opacity})`,
-              boxShadow: `0 0 ${particle.shadow}px rgba(59, 130, 246, 0.5)`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating particles - only render on client to avoid hydration mismatch */}
+      {particles.length > 0 && (
+        <div ref={particlesRef} className="absolute inset-0 pointer-events-none z-0">
+          {particles.map((particle, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                background: `rgba(${particle.r}, ${particle.g}, ${particle.b}, ${particle.opacity})`,
+                boxShadow: `0 0 ${particle.shadow}px rgba(59, 130, 246, 0.5)`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <Hero />
     </div>
