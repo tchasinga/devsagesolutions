@@ -47,7 +47,6 @@ export default function Navbars() {
     { href: '/services', label: 'Services', id: 'services' },
     { href: '/advantages', label: 'Advantages', id: 'advantages' },
     { href: '/projects', label: 'Projects', id: 'projects' },
-    { href: '/testimonials', label: 'Testimonials', id: 'testimonials' },
     { href: '/contact', label: 'Contact', id: 'contact' },
   ]
 
