@@ -126,7 +126,7 @@ export default function ChatBot() {
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
         className={`
-          fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 
+          fixed bottom-4 bg-white/10 backdrop-blur-sm right-4 md:bottom-6 md:right-6 z-50 
           w-14 h-14 md:w-16 md:h-16 rounded-full
           cursor-pointer
           text-white shadow-2xl hover:shadow-blue-500/50
@@ -134,14 +134,7 @@ export default function ChatBot() {
           flex items-center justify-center
           ${isOpen ? 'rotate-90' : 'rotate-0'}
         `}
-        style={{
-          backgroundColor: '#f5f5f5',
-          background: 'rgba(255, 255, 255, 0)',
-          backdropFilter: 'blur(5px)',
-          WebkitBackdropFilter: 'blur(5px)',
-          borderRadius: '100px',
-          border: '1px solid rgba(255, 255, 255, 0.18)'
-        }}
+        
         aria-label="Toggle chat"
       >
         {isOpen ? (
