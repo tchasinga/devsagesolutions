@@ -6,6 +6,7 @@ import Keeper from './components/Pages/Keeper'
 import ChatBot from './components/ChatBot'
 import Service from './components/Pages/Service'
 import Advantages from './components/Pages/Advantages'
+import Contact from './components/Pages/Contact'
 
 
 export default function Home () {
@@ -17,6 +18,7 @@ export default function Home () {
     <ChatBot />
     <Service />
     <Advantages />
+    <Contact />
    </div>
   )
 }

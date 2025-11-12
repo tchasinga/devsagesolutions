@@ -68,8 +68,8 @@ export default function Navbars() {
           background: isScrolled 
             ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.12) 100%)'
             : 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.08) 100%)',
-          backdropFilter: 'blur(10px) ',
-          WebkitBackdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(5px) ',
+          WebkitBackdropFilter: 'blur(5px)',
           border: isScrolled 
             ? '1px solid rgba(255, 255, 255, 0.25)'
             : '1px solid rgba(255, 255, 255, 0.18)',
