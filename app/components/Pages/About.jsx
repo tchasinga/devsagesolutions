@@ -166,6 +166,7 @@ export default function About() {
 
   return (
     <div 
+      id="about"
       ref={containerRef}
       className='bg-gradient-to-br from-gray-800 via-[#38393D] to-gray-900 relative min-h-screen w-full py-16 md:py-20 flex items-center justify-center overflow-hidden'
     >

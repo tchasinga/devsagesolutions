@@ -156,6 +156,7 @@ export default function Advantages() {
 
   return (
     <div 
+      id="advantages"
       ref={containerRef}
       className='bg-gradient-to-br from-[#0a0a0b] via-[#1a1b1f] to-[#0f1013] relative min-h-screen w-full py-20 md:py-28 flex flex-col items-center overflow-hidden'
     >

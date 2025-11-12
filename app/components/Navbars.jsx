@@ -50,9 +50,40 @@ export default function Navbars() {
     { href: '/contact', label: 'Contact', id: 'contact' },
   ]
 
-  const handleLinkClick = (id) => {
-    setActiveLink(id)
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      const offset = 100 // Offset for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  const handleLinkClick = (item) => {
+    setActiveLink(item.id)
     setIsMobileMenuOpen(false)
+    
+    // If it's home, scroll to top
+    if (item.id === 'home') {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+      }, 100)
+    }
+    // If it's not projects or home, scroll to the section
+    else if (item.id !== 'projects') {
+      // Small delay to ensure mobile menu closes first
+      setTimeout(() => {
+        scrollToSection(item.id)
+      }, 100)
+    }
   }
 
   return (
@@ -86,7 +117,7 @@ export default function Navbars() {
             <Link 
               href="/" 
               className="group relative"
-              onClick={() => handleLinkClick('home')}
+              onClick={() => handleLinkClick({ id: 'home', href: '/' })}
             >
               <div className="flex items-center gap-3">
                 <div 
@@ -116,44 +147,88 @@ export default function Navbars() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                onClick={() => handleLinkClick(item.id)}
-                className={`relative px-5 py-2.5 rounded-xl font-medium transition-all duration-300 group ${
-                  activeLink === item.id
-                    ? 'text-white'
-                    : 'text-white/85 hover:text-white'
-                }`}
-              >
-                <span className="relative z-10 flex items-center gap-1.5">
-                  {item.label}
-                </span>
-                
-                {/* Active/Hover Background */}
-                <div 
-                  className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+            {navItems.map((item, index) => {
+              // For projects, use regular Link. For others, use button with scroll
+              if (item.id === 'projects') {
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => handleLinkClick(item)}
+                    className={`relative px-5 py-2.5 rounded-xl font-medium transition-all duration-300 group ${
+                      activeLink === item.id
+                        ? 'text-white'
+                        : 'text-white/85 hover:text-white'
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      {item.label}
+                    </span>
+                    
+                    {/* Active/Hover Background */}
+                    <div 
+                      className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                        activeLink === item.id
+                          ? 'bg-gradient-to-r from-blue-500/95 via-cyan-500/90 to-teal-400/95 shadow-lg shadow-blue-500/30 scale-100'
+                          : 'bg-white/0 group-hover:bg-white/10 group-hover:scale-105'
+                      }`}
+                    />
+                    
+                    {/* Active indicator */}
+                    {activeLink === item.id && (
+                      <>
+                        <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-teal-300 to-transparent rounded-full"></div>
+                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-teal-300 rounded-full animate-pulse shadow-lg shadow-teal-300/50"></div>
+                      </>
+                    )}
+                    
+                    {/* Hover glow effect */}
+                    {activeLink !== item.id && (
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-400/0 to-teal-400/0 group-hover:from-blue-500/10 group-hover:via-blue-400/10 group-hover:to-teal-400/10 transition-all duration-300 blur-sm"></div>
+                    )}
+                  </Link>
+                )
+              }
+              
+              // For other items, use button with scroll functionality
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleLinkClick(item)}
+                  className={`relative px-5 py-2.5 rounded-xl font-medium transition-all duration-300 group ${
                     activeLink === item.id
-                      ? 'bg-gradient-to-r from-blue-500/95 via-cyan-500/90 to-teal-400/95 shadow-lg shadow-blue-500/30 scale-100'
-                      : 'bg-white/0 group-hover:bg-white/10 group-hover:scale-105'
+                      ? 'text-white'
+                      : 'text-white/85 hover:text-white'
                   }`}
-                />
-                
-                {/* Active indicator */}
-                {activeLink === item.id && (
-                  <>
-                    <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-teal-300 to-transparent rounded-full"></div>
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-teal-300 rounded-full animate-pulse shadow-lg shadow-teal-300/50"></div>
-                  </>
-                )}
-                
-                {/* Hover glow effect */}
-                {activeLink !== item.id && (
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-400/0 to-teal-400/0 group-hover:from-blue-500/10 group-hover:via-blue-400/10 group-hover:to-teal-400/10 transition-all duration-300 blur-sm"></div>
-                )}
-              </Link>
-            ))}
+                >
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {item.label}
+                  </span>
+                  
+                  {/* Active/Hover Background */}
+                  <div 
+                    className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                      activeLink === item.id
+                        ? 'bg-gradient-to-r from-blue-500/95 via-cyan-500/90 to-teal-400/95 shadow-lg shadow-blue-500/30 scale-100'
+                        : 'bg-white/0 group-hover:bg-white/10 group-hover:scale-105'
+                    }`}
+                  />
+                  
+                  {/* Active indicator */}
+                  {activeLink === item.id && (
+                    <>
+                      <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-teal-300 to-transparent rounded-full"></div>
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-teal-300 rounded-full animate-pulse shadow-lg shadow-teal-300/50"></div>
+                    </>
+                  )}
+                  
+                  {/* Hover glow effect */}
+                  {activeLink !== item.id && (
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-400/0 to-teal-400/0 group-hover:from-blue-500/10 group-hover:via-blue-400/10 group-hover:to-teal-400/10 transition-all duration-300 blur-sm"></div>
+                  )}
+                </button>
+              )
+            })}
             
             {/* CTA Button */}
             <Link
@@ -190,33 +265,66 @@ export default function Navbars() {
           }`}
         >
           <div className="px-6 pt-4 space-y-2">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                onClick={() => handleLinkClick(item.id)}
-                className={`block px-5 py-3.5 rounded-xl font-medium transition-all duration-300 relative overflow-hidden group ${
-                  activeLink === item.id
-                    ? 'bg-gradient-to-r from-blue-500/25 via-cyan-500/20 to-teal-400/25 text-white border border-white/25 shadow-lg'
-                    : 'text-white/85 hover:text-white hover:bg-white/10 border border-transparent'
-                }`}
-              >
-                <div className="flex items-center justify-between relative z-10">
-                  <span className="flex items-center gap-2">
-                    {item.label}
-                  </span>
-                  {activeLink === item.id && (
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse shadow-lg shadow-teal-400/50"></div>
+            {navItems.map((item, index) => {
+              // For projects, use regular Link. For others, use button with scroll
+              if (item.id === 'projects') {
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => handleLinkClick(item)}
+                    className={`block px-5 py-3.5 rounded-xl font-medium transition-all duration-300 relative overflow-hidden group ${
+                      activeLink === item.id
+                        ? 'bg-gradient-to-r from-blue-500/25 via-cyan-500/20 to-teal-400/25 text-white border border-white/25 shadow-lg'
+                        : 'text-white/85 hover:text-white hover:bg-white/10 border border-transparent'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between relative z-10">
+                      <span className="flex items-center gap-2">
+                        {item.label}
+                      </span>
+                      {activeLink === item.id && (
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse shadow-lg shadow-teal-400/50"></div>
+                        </div>
+                      )}
                     </div>
+                    {/* Active indicator line */}
+                    {activeLink === item.id && (
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-teal-400 rounded-r-full"></div>
+                    )}
+                  </Link>
+                )
+              }
+              
+              // For other items, use button with scroll functionality
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleLinkClick(item)}
+                  className={`block w-full text-left px-5 py-3.5 rounded-xl font-medium transition-all duration-300 relative overflow-hidden group ${
+                    activeLink === item.id
+                      ? 'bg-gradient-to-r from-blue-500/25 via-cyan-500/20 to-teal-400/25 text-white border border-white/25 shadow-lg'
+                      : 'text-white/85 hover:text-white hover:bg-white/10 border border-transparent'
+                  }`}
+                >
+                  <div className="flex items-center justify-between relative z-10">
+                    <span className="flex items-center gap-2">
+                      {item.label}
+                    </span>
+                    {activeLink === item.id && (
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse shadow-lg shadow-teal-400/50"></div>
+                      </div>
+                    )}
+                  </div>
+                  {/* Active indicator line */}
+                  {activeLink === item.id && (
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-teal-400 rounded-r-full"></div>
                   )}
-                </div>
-                {/* Active indicator line */}
-                {activeLink === item.id && (
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-teal-400 rounded-r-full"></div>
-                )}
-              </Link>
-            ))}
+                </button>
+              )
+            })}
             
             {/* Mobile CTA Button */}
             <Link

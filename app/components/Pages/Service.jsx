@@ -281,6 +281,7 @@ export default function Service() {
 
   return (
     <div 
+      id="services"
       ref={containerRef}
       className='bg-gradient-to-br from-[#0a0a0b] via-[#1f2023] to-[#0a0a0b] relative min-h-screen w-full py-16 md:py-20 flex flex-col items-center overflow-hidden'
     >

@@ -174,6 +174,7 @@ export default function Contact() {
 
   return (
     <div 
+      id="contact"
       ref={containerRef}
       className='min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0a0a0b] via-[#1a1b1f] to-[#0f1013] relative w-full py-20 md:py-28 overflow-hidden'
     >
