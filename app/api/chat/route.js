@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
-import OpenAI from 'openai';
+import { NextResponse } from 'next/server'
+import OpenAI from 'openai'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+  apiKey: process.env.OPENAI_API_KEY
+})
 
 // Website content context
 const websiteContext = `
@@ -347,17 +347,17 @@ SEO & METADATA:
 - Open Graph tags configured for social media sharing
 - Twitter card metadata included
 - Robots: Index and follow enabled
-`;
+`
 
-export async function POST(request) {
+export async function POST (request) {
   try {
-    const { message, conversationHistory = [] } = await request.json();
+    const { message, conversationHistory = [] } = await request.json()
 
     if (!message) {
       return NextResponse.json(
         { error: 'Message is required' },
         { status: 400 }
-      );
+      )
     }
 
     // Build conversation context
@@ -372,33 +372,34 @@ INSTRUCTIONS:
 - If asked about something not in the context, politely say you can only answer questions about DevSage Solutions based on the website content
 - Keep responses concise but informative
 - Use natural, conversational language
-- Show enthusiasm about the company's achievements and services`;
+- Show enthusiasm about the company's achievements and services`
 
     // Prepare messages for OpenAI
     const messages = [
       { role: 'system', content: systemPrompt },
       ...conversationHistory.slice(-10), // Keep last 10 messages for context
       { role: 'user', content: message }
-    ];
+    ]
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini", // Using a valid model name
+      model: 'gpt-4o-mini', // Using a valid model name
       messages: messages,
       temperature: 0.7,
-      max_tokens: 1000,
-    });
+      max_tokens: 1000
+    })
 
-    const aiResponse = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
+    const aiResponse =
+      completion.choices[0]?.message?.content ||
+      'Sorry, I could not generate a response.'
 
     return NextResponse.json({
-      response: aiResponse,
-    });
+      response: aiResponse
+    })
   } catch (error) {
-    console.error('OpenAI API error:', error);
+    console.error('OpenAI API error:', error)
     return NextResponse.json(
       { error: 'Failed to get response from AI. Please try again.' },
       { status: 500 }
-    );
+    )
   }
 }
-
